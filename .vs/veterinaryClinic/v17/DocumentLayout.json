@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|c:\\users\\kanta\\riderprojects\\veterinaryclinic\\veterinaryclinic\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|solutionrelative:veterinaryclinic\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|c:\\users\\kanta\\riderprojects\\veterinaryclinic\\veterinaryclinic\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|solutionrelative:veterinaryclinic\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|c:\\users\\kanta\\riderprojects\\veterinaryclinic\\veterinaryclinic\\postgrescontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD11A7CD-8EF8-440A-B8AD-21C484A5AE0D}|veterinaryClinic\\veterinaryClinic.csproj|solutionrelative:veterinaryclinic\\postgrescontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\App.xaml.cs",
+              "RelativeDocumentMoniker": "veterinaryClinic\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\App.xaml.cs",
+              "RelativeToolTip": "veterinaryClinic\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:30:25.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\App.xaml",
+              "RelativeDocumentMoniker": "veterinaryClinic\\App.xaml",
+              "ToolTip": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\App.xaml",
+              "RelativeToolTip": "veterinaryClinic\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-02T11:26:41.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PostgresContext.cs",
+              "DocumentMoniker": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\PostgresContext.cs",
+              "RelativeDocumentMoniker": "veterinaryClinic\\PostgresContext.cs",
+              "ToolTip": "C:\\Users\\kanta\\RiderProjects\\veterinaryClinic\\veterinaryClinic\\PostgresContext.cs",
+              "RelativeToolTip": "veterinaryClinic\\PostgresContext.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAA4wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T10:45:25.309Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
