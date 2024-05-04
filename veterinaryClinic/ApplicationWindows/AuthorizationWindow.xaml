@@ -1,21 +1,21 @@
-﻿<Window x:Class="veterinaryClinic.ConnectionWindows"
+﻿<Window x:Class="veterinaryClinic.ApplicationWindows.AuthorizationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:veterinaryClinic"
+        xmlns:local="clr-namespace:veterinaryClinic.ApplicationWindows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ConnectionWindows" Height="340" Width="340" MinHeight="180" MinWidth="180" MaxHeight="500" MaxWidth="500">
+        Title="AuthorizationWindow" Height="340" Width="340" MinHeight="180" MinWidth="180" MaxHeight="500" MaxWidth="500">
     <Grid>
         <ScrollViewer>
             <StackPanel VerticalAlignment="Center" 
                         HorizontalAlignment="Center"
-                        Margin="10,0,0,0">
+                        Margin="15,0,0,0">
                 <TextBlock FontSize="25" 
                            HorizontalAlignment="Center"
                            TextWrapping="Wrap"
-                           Margin="0,0,0,15">Введите данные для подключения</TextBlock>
+                          >Введите данные для входа в систему</TextBlock>
                 <TextBox Name="TextBoxUserName" 
                          FontSize="20"
                          TextWrapping="Wrap"
@@ -27,7 +27,7 @@
                          materialDesign:HintAssist.Hint="Пароль"></TextBox>
                 <Button FontSize="20"
                         MinHeight="40"
-                        Padding="5">Подключить</Button>
+                        Padding="5">Войти</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

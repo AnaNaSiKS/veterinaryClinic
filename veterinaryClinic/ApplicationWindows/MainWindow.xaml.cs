@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 
 namespace veterinaryClinic;
 
@@ -19,5 +20,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        TablesModel<Animalsinfo> table = new TablesModel<Animalsinfo>();
+        table.tables = OpenConnectionDataBase.GetInstance().Animalsinfos.ToList();
+        DataContext = table;
     }
 }
