@@ -1,0 +1,16 @@
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.AnimalsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
+      xmlns:ViewModel="clr-namespace:veterinaryClinic.ViewModel"
+      mc:Ignorable="d"
+      Title="AnimalsPage" Height="450" Width="800">
+    <Page.DataContext>
+        <DataTemplate DataType="{x:Type ViewModel:AnimalsVM}"></DataTemplate>
+    </Page.DataContext>
+    <Grid>
+        <DataGrid Name="DataGrid" ItemsSource="{Binding DisplayAnimals}"></DataGrid>
+    </Grid>
+</Page>

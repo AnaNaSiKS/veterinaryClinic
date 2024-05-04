@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
+using veterinaryClinic.ApplicationPages;
 
 namespace veterinaryClinic;
 
@@ -20,8 +21,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        TablesModel<Animalsinfo> table = new TablesModel<Animalsinfo>();
-        table.tables = OpenConnectionDataBase.GetInstance().Animalsinfos.ToList();
-        DataContext = table;
+        var animals = OpenConnectionDataBase.GetInstance().Animals.ToList();
+        foreach (var VARIABLE in animals)
+        {
+            Console.WriteLine(VARIABLE.Idanimals);
+        }
+        Frame.Navigate(new Uri("ApplicationPages/AnimalsPage.xaml", UriKind.Relative));
     }
 }

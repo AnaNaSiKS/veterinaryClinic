@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:veterinaryClinic"
+        xmlns:ViewModel="clr-namespace:veterinaryClinic.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <DataTemplate DataType="{x:Type ViewModel:ViewModelBase}">
+        </DataTemplate>
+    </Window.DataContext>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -18,9 +23,6 @@
             <ColumnDefinition Width="0.9*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <DataGrid Grid.Row="1" 
-                  Grid.Column="1"
-                  Name="DataGrid" 
-                  ItemsSource="{Binding tables}"></DataGrid>
+        <Frame Grid.Row="1" Grid.Column="1" Name="Frame"></Frame>
     </Grid>
 </Window>
