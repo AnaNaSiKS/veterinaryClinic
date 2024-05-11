@@ -21,11 +21,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var animals = OpenConnectionDataBase.GetInstance().Animals.ToList();
-        foreach (var VARIABLE in animals)
-        {
-            Console.WriteLine(VARIABLE.Idanimals);
-        }
-        Frame.Navigate(new Uri("ApplicationPages/AnimalsPage.xaml", UriKind.Relative));
+        Frame.Navigate(new Uri("ApplicationPages/TablesPage.xaml", UriKind.Relative));
     }
 }

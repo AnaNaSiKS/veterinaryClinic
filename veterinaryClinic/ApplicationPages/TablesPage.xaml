@@ -1,4 +1,4 @@
-﻿<Page x:Class="veterinaryClinic.ApplicationPages.AnimalsPage"
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.TablesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,11 +6,9 @@
       xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
       xmlns:ViewModel="clr-namespace:veterinaryClinic.ViewModel"
       mc:Ignorable="d"
-      Title="AnimalsPage" Height="450" Width="800">
-    <Page.DataContext>
-        <DataTemplate DataType="{x:Type ViewModel:AnimalsVM}"></DataTemplate>
-    </Page.DataContext>
+      Title="TablesPage">
+
     <Grid>
-        <DataGrid Name="DataGrid" ItemsSource="{Binding DisplayAnimals}"></DataGrid>
+        <DataGrid Name="DataGrid" ItemsSource="{Binding DisplayTable}"></DataGrid>
     </Grid>
 </Page>

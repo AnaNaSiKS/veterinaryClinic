@@ -3,46 +3,62 @@ using Microsoft.EntityFrameworkCore;
 
 namespace veterinaryClinic;
 
-public class ExecuteCommandToDataBase
+internal class ExecuteCommandToDataBase
 {
-    public List<Analysisresult> GetAnalysisresults()
+    private static readonly PostgresContext db = OpenConnectionDataBase.GetInstance();
+    public static List<Medicine> GetMedicines()
     {
-        return OpenConnectionDataBase.GetInstance().Analysisresults.ToList();
+        return db.Medicines.ToList();
     }
 
-    public List<Animal> GetAnamsl()
+    public static List<Medicalitem> GetMedicalitems()
     {
-        return OpenConnectionDataBase.GetInstance().Animals.ToList();
+        return db.Medicalitems.ToList();
     }
 
-    public List<Animalsinfo> GetAnimalsInfos()
+    public static List<Equipmentclinic> GetEquipmentclinics()
     {
-        return OpenConnectionDataBase.GetInstance().Animalsinfos.ToList();
+        return db.Equipmentclinics.ToList();
     }
 
-    public List<Appointment> GetAppointments()
+    public static List<Analysisresult> GetAnalysisresults()
     {
-        return OpenConnectionDataBase.GetInstance().Appointments.ToList();
+        return db.Analysisresults.ToList();
     }
 
-    public List<Datetimeofreception> GetDatetimeOfReceptions()
+    public static List<Animal> GetAnimals()
     {
-        return OpenConnectionDataBase.GetInstance().Datetimeofreceptions.ToList();
+        return db.Animals.ToList();
     }
 
-    public List<Diagnosis> GetDiagnosis()
+    public static List<Animalsinfo> GetAnimalsInfos()
     {
-        return OpenConnectionDataBase.GetInstance().Diagnoses.ToList();
+        return db.Animalsinfos.ToList();
     }
 
-    public List<Employee> GetEmployees()
+    public static List<Appointment> GetAppointments()
     {
-        return OpenConnectionDataBase.GetInstance().Employees.ToList();
+        return db.Appointments.ToList();
     }
 
-    public List<Equipmentclass> GetEquipmentclasses()
+    public static List<Datetimeofreception> GetDatetimeOfReceptions()
     {
-        return OpenConnectionDataBase.GetInstance().Equipmentclasses.ToList();
+        return db.Datetimeofreceptions.ToList();
+    }
+
+    public static List<Diagnosis> GetDiagnosis()
+    {
+        return db.Diagnoses.ToList();
+    }
+
+    public static List<Employee> GetEmployees()
+    {
+        return db.Employees.ToList();
+    }
+
+    public static List<Equipmentclass> GetEquipmentclasses()
+    {
+        return db.Equipmentclasses.ToList();
     }
     
     

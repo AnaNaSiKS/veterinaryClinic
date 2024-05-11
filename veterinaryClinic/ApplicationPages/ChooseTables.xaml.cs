@@ -2,9 +2,9 @@
 
 namespace veterinaryClinic.ApplicationPages;
 
-public partial class AnimalsPage : Page
+public partial class ChooseTables : Page
 {
-    public AnimalsPage()
+    public ChooseTables()
     {
         InitializeComponent();
     }
