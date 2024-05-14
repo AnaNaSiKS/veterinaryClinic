@@ -8,7 +8,7 @@ public partial class TablesPage : Page
     public TablesPage()
     {
         InitializeComponent();
-        TeblesPageVM avm = new TeblesPageVM();
+        TablesPageVM avm = new TablesPageVM();
         DataContext = avm;
     }
 }

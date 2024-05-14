@@ -8,7 +8,13 @@ namespace veterinaryClinic.Model;
 
 public class TableList
 {
-    private List<dynamic> _tableList;
+    private List<object> _tableList;
+    private object _nameTable;
+
+    public object NameTable
+    {
+        get { return _nameTable; }
+    }
 
     public List<dynamic> animalsList
     {
@@ -20,9 +26,16 @@ public class TableList
     {
         switch (nameTable)
         {
-            case Animal: _tableList =  new List<dynamic>(ExecuteCommandToDataBase.GetAnimals()); break;
-            case Analysisresult: _tableList = new List<dynamic>(ExecuteCommandToDataBase.GetAnalysisresults()); break;
+            case Animal: 
+                _tableList =  new List<object>(ExecuteCommandToDataBase.GetAnimals());
+                _nameTable = new Animal(); 
+                break;
+            case Analysisresult: 
+                _tableList = new List<object>(ExecuteCommandToDataBase.GetAnalysisresults()); 
+                break;
             default: throw new ArgumentException("Неверный тип таблицы"); break;
         }
     }
+    
+    
 }
