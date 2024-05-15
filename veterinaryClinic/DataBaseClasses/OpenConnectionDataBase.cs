@@ -1,10 +1,12 @@
-﻿namespace veterinaryClinic;
+﻿using veterinaryClinic.Model;
+
+namespace veterinaryClinic.DataBaseClasses;
 
 public class OpenConnectionDataBase
 {
-    private static PostgresContext _INSTANCE;
+    private static PostgresContext? _INSTANCE;
+    private static readonly Configuraiton _configuraiton = ConfigurationHelper.ReadFromJson();
     private static object _locker = new object();
-    
 
     public OpenConnectionDataBase()
     {
@@ -17,7 +19,7 @@ public class OpenConnectionDataBase
             lock (_locker)
             {
                 if (_INSTANCE == null)
-                    _INSTANCE = new PostgresContext();
+                    _INSTANCE = new PostgresContext(_configuraiton.ConnectionName, _configuraiton.ConnectionPassword);
             }
             
         }

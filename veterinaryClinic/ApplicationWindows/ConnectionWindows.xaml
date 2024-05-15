@@ -27,6 +27,7 @@
                          materialDesign:HintAssist.Hint="Пароль"></TextBox>
                 <Button FontSize="20"
                         MinHeight="40"
+                        Command="{Binding GetConnect}"
                         Padding="5">Подключить</Button>
             </StackPanel>
         </ScrollViewer>

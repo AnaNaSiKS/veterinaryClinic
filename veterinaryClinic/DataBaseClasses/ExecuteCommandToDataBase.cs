@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.JavaScript;
 using Microsoft.EntityFrameworkCore;
+using veterinaryClinic.DataBaseClasses;
 
 namespace veterinaryClinic;
 

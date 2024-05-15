@@ -3,6 +3,7 @@ using System.Xml;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using veterinaryClinic.DataBaseClasses;
 
 namespace veterinaryClinic.Model;
 

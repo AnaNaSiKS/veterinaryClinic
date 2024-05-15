@@ -2,11 +2,11 @@
 
 public class Configuraiton
 {
-    private static String? connectionName;
-    private static String? connectionPassword;
-    private static String? userName;
-    private static String? userPassword;
-
+    private string? connectionName;
+    private string? connectionPassword;
+    private string? userName;
+    private string? userPassword;
+    
     public string? ConnectionName
     {
         get => connectionName;
@@ -33,16 +33,20 @@ public class Configuraiton
 
     public Configuraiton()
     {
-        ConnectionName = null;
-        ConnectionPassword = null;
-        UserName = null;
-        UserPassword = null;
     }
 
     public Configuraiton(String connectionName, String connectionPassword)
     {
         ConnectionName = connectionName;
-        ConnectionPassword = connectionName;
+        ConnectionPassword = connectionPassword;
+    }
+
+    public Configuraiton(string connectionName, string connectionPassword, string userName, string userPassword)
+    {
+        ConnectionName = connectionName;
+        ConnectionPassword = connectionPassword;
+        UserName = userName;
+        UserPassword = userPassword;
     }
 
     public bool CheckConnection()

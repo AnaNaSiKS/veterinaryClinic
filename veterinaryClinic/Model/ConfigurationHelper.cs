@@ -20,7 +20,8 @@ public class ConfigurationHelper
             }
             
         }
-        throw new ArgumentException($"Файл {_filePath} не удалось найти.");
+        WriteToJson(new Configuraiton());
+        return new Configuraiton();
     }
 
     public static void WriteToJson(Configuraiton conf)
@@ -31,7 +32,7 @@ public class ConfigurationHelper
         }
     }
 
-    public static bool CheckFileExists(String filePath)
+    private static bool CheckFileExists(String filePath)
     {
         return File.Exists(filePath);
     }

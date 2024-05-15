@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using veterinaryClinic.ApplicationPages;
+using veterinaryClinic.DataBaseClasses;
 using veterinaryClinic.Model;
 
 namespace veterinaryClinic;
@@ -22,9 +23,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        ConfigurationHelper.WriteToJson(new Configuraiton("asdad","sad"));
-        Configuraiton conf =  ConfigurationHelper.ReadFromJson();
-        Console.WriteLine(conf.ConnectionName);
         Frame.Navigate(new Uri("ApplicationPages/TablesPage.xaml", UriKind.Relative));
     }
 }
