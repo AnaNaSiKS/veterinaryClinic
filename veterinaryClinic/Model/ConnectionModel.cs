@@ -1,20 +1,29 @@
-﻿using veterinaryClinic.DataBaseClasses;
+﻿using System.Windows.Navigation;
+using veterinaryClinic.ApplicationWindows;
+using veterinaryClinic.DataBaseClasses;
+using veterinaryClinic.ViewModel;
 
 namespace veterinaryClinic.Model;
 
 public class ConnectionModel
 {
     private Configuraiton _configuraiton = ConfigurationHelper.ReadFromJson();
-    
+    private bool isSaveMe = false;
+
+    public bool IsSaveMe
+    {
+        get { return isSaveMe; }
+        set => isSaveMe = value;
+    }
+
     public bool GetConnection(string? connName, string? connPassword)
     {
-        if (_configuraiton.CheckConnection())
+        if (connName == null || connPassword == null)
         {
-            return true;
-            //TODO Доделать проверку на подключение к БД
+            return false;
         }
         WriteNewConfig(connName, connPassword);
-        return false;
+        return true;
 }
     
     public void WriteNewConfig(string? connName, string? connPassword)
@@ -27,6 +36,10 @@ public class ConnectionModel
 
     public ConnectionModel()
     {
-        //GetConnection(connName, connPassword);
+        if (_configuraiton.CheckConnection())
+        {
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+        }
     }
 }

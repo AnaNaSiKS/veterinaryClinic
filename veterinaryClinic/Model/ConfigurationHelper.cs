@@ -26,10 +26,7 @@ public class ConfigurationHelper
 
     public static void WriteToJson(Configuraiton conf)
     {
-        using (FileStream fs = new FileStream(_filePath, FileMode.OpenOrCreate))
-        {
-            JsonSerializer.Serialize<Configuraiton>(fs, conf);
-        }
+
     }
 
     private static bool CheckFileExists(String filePath)

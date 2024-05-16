@@ -4,23 +4,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:veterinaryClinic"
+        xmlns:localVM="clr-namespace:veterinaryClinic.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ConnectionWindows" Height="340" Width="340" MinHeight="180" MinWidth="180" MaxHeight="500" MaxWidth="500">
+    <Window.DataContext>
+        <localVM:ConnectionVM/>
+    </Window.DataContext>
     <Grid>
         <ScrollViewer>
             <StackPanel VerticalAlignment="Center" 
                         HorizontalAlignment="Center"
+                        Orientation="Vertical"
                         Margin="10,0,0,0">
                 <TextBlock FontSize="25" 
                            HorizontalAlignment="Center"
                            TextWrapping="Wrap"
                            Margin="0,0,0,15">Введите данные для подключения</TextBlock>
                 <TextBox Name="TextBoxUserName" 
+                         Text="{Binding ConnectionName}"
                          FontSize="20"
                          TextWrapping="Wrap"
                          materialDesign:HintAssist.Hint="Имя"></TextBox>
                 <TextBox Name="TextBoxPassword" 
+                         Text="{Binding ConnectionPassword}"
                          FontSize="20"
                          TextWrapping="Wrap"
                          Margin="0,0,0,15"
@@ -29,6 +36,17 @@
                         MinHeight="40"
                         Command="{Binding GetConnect}"
                         Padding="5">Подключить</Button>
+                <StackPanel 
+                    Orientation="Horizontal"
+                    Margin="0,10,0,0">
+                    <CheckBox 
+                        Name="CheckBoxSaveMyChoose"
+                        IsChecked="{Binding SaveIO, Mode=TwoWay}"></CheckBox>
+                    <TextBlock 
+                        Margin="10,0,0,0"
+                        TextWrapping="Wrap"
+                        Text="Запомнить подключение"></TextBlock>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

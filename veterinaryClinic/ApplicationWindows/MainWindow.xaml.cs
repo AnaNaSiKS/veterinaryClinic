@@ -12,6 +12,7 @@ using MaterialDesignThemes.Wpf;
 using veterinaryClinic.ApplicationPages;
 using veterinaryClinic.DataBaseClasses;
 using veterinaryClinic.Model;
+using veterinaryClinic.ViewModel;
 
 namespace veterinaryClinic;
 
@@ -24,5 +25,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Frame.Navigate(new Uri("ApplicationPages/TablesPage.xaml", UriKind.Relative));
+        TablesPageVM tablesPageVm = new TablesPageVM();
+        DataContext = tablesPageVm;
     }
 }
