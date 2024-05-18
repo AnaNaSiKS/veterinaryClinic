@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:veterinaryClinic"
-        xmlns:ViewModel="clr-namespace:veterinaryClinic.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local2="clr-namespace:veterinaryClinic.Model"
+        xmlns:viewModel="clr-namespace:veterinaryClinic.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <DataTemplate DataType="{x:Type ViewModel:ViewModelBase}">
-        </DataTemplate>
+        <viewModel:MainViewModel/>
     </Window.DataContext>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
@@ -19,10 +21,56 @@
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"></ColumnDefinition>
-            <ColumnDefinition Width="0.9*"></ColumnDefinition>
+            <ColumnDefinition Width="0.08*"></ColumnDefinition>
+            <ColumnDefinition Width="0.92*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <Frame Grid.Row="1" Grid.Column="1" Name="Frame"></Frame>
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+            Width="80"
+            Background="{DynamicResource MaterialDesignCardBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListBox
+                Grid.Row="2"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding SampleList}"
+                SelectedItem="{Binding SelectedItem}"
+                SelectedIndex="0">
+                <ListBox.ItemContainerStyle>
+                    <Style
+                        TargetType="ListBoxItem"
+                        BasedOn="{StaticResource MaterialDesign3.NavigationRailListBoxItem}">
+                        <Setter
+                            Property="materialDesign:BadgedAssist.Badge"
+                            Value="{Binding Notification}" />
+                        <Setter
+                            Property="materialDesign:NavigationRailAssist.IsTextVisible"
+                            Value="True" />
+                        <Setter
+                            Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                            Value="{Binding SelectedIcon}" />
+                        <Setter
+                            Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                            Value="{Binding UnselectedIcon}" />
+                        <Setter
+                            Property="materialDesign:NavigationRailAssist.FloatingContent"
+                            Value="{Binding Title}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.Resources>
+                    <DataTemplate
+                        DataType="{x:Type local2:SampleItem}">
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
+        </Grid>
+
+        
+        <Frame Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentPage}"></Frame>
     </Grid>
 </Window>

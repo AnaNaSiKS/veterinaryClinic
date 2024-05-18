@@ -15,6 +15,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     </ItemGroup>
@@ -34,6 +35,12 @@
 
     <ItemGroup>
       <Folder Include="Assets\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Xaml.Behaviors">
+        <HintPath>..\..\..\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

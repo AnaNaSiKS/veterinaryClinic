@@ -9,6 +9,8 @@ public class ViewModelBase: INotifyPropertyChanged
 
     public void OnPropertyChanged([CallerMemberName] string propName = null)
     {
-     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));   
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));   
     }
+    
+    
 }

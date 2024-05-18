@@ -24,8 +24,5 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        Frame.Navigate(new Uri("ApplicationPages/TablesPage.xaml", UriKind.Relative));
-        TablesPageVM tablesPageVm = new TablesPageVM();
-        DataContext = tablesPageVm;
     }
 }
