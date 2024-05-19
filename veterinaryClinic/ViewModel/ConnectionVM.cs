@@ -7,7 +7,7 @@ namespace veterinaryClinic.ViewModel;
 
 public class ConnectionVM: ViewModelBase
 {
-    private ConnectionModel _connectionModel;
+    private ConnectionModel _connectionModel = new ConnectionModel();
     private string connectionName;
     private string connectionPassword;
 
@@ -41,20 +41,11 @@ public class ConnectionVM: ViewModelBase
 
     private void Connect(object obj)
     {
-        if (_connectionModel.GetConnection(ConnectionName, ConnectionPassword))
-        {
-            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
-            authorizationWindow.Show();
-        }
-        else
-        {
-            MessageBox.Show("Поля не введены");
-        }
+        _connectionModel.GetConnection(ConnectionName, ConnectionPassword);
     }
 
     public ConnectionVM()
     {
-        _connectionModel = new ConnectionModel();
         GetConnect = new RelayCommand(Connect);
     }
 }

@@ -1,24 +1,47 @@
-﻿namespace veterinaryClinic.Model;
+﻿using System.Windows;
+using veterinaryClinic.ApplicationWindows;
+
+namespace veterinaryClinic.Model;
 
 public class AuthorizationModel
 {
     private Configuraiton _configuraiton = ConfigurationHelper.ReadFromJson();
-    private bool isSaveMe = false;
 
     public bool IsSaveMe
     {
-        get { return isSaveMe; }
-        set => isSaveMe = value;
+        get { return _configuraiton.IsSaveUser; }
+        set => _configuraiton.IsSaveUser = value;
     }
 
-    public bool GetUser(string? userName, string? userPassword)
+    public void GetUser(string? userName, string? userPassword)
     {
-        if (userName == null || userPassword == null)
+        try
         {
-            return false;
+
+
+            if (userName == null || userPassword == null)
+            {
+                return;
+            }
+
+            if (ExecuteCommandToDataBase.CheckUser(userName, userPassword))
+            {
+                MessageBox.Show("Авторизация прошла успешно", "Авторизация");
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+                return;
+            }
+
+            WriteNewConfig(userName, userPassword);
+
+            NavigationController.GoToMainWindow();
         }
-        WriteNewConfig(userName, userPassword);
-        return true;
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
     
     public void WriteNewConfig(string? userName, string? userPassword)
@@ -31,10 +54,12 @@ public class AuthorizationModel
 
     public AuthorizationModel()
     {
-        if (_configuraiton.CheckUser())
+        if (_configuraiton.CheckUser() && _configuraiton.IsSaveUser)
         {
-            MainWindow authorizationWindow = new MainWindow();
-            authorizationWindow.Show();
+            NavigationController.GoToMainWindow();
+            
         }
     }
+    
+    
 }

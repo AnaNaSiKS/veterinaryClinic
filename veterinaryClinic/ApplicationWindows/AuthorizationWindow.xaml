@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:veterinaryClinic.ApplicationWindows"
         xmlns:localVM="clr-namespace:veterinaryClinic.ViewModel"
+        xmlns:validation="clr-namespace:veterinaryClinic.ValidationRules"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="AuthorizationWindow" Height="340" Width="340" MinHeight="180" MinWidth="180" MaxHeight="500" MaxWidth="500">
@@ -21,16 +22,35 @@
                            TextWrapping="Wrap"
                           >Введите данные для входа в систему</TextBlock>
                 <TextBox Name="TextBoxUserName" 
-                         Text="{Binding UserName}"
-                         FontSize="20"
-                         TextWrapping="Wrap"
-                         materialDesign:HintAssist.Hint="Имя"></TextBox>
-                <TextBox Name="TextBoxPassword" 
-                         Text="{Binding UserPassword}"
                          FontSize="20"
                          TextWrapping="Wrap"
                          Margin="0,0,0,15"
-                         materialDesign:HintAssist.Hint="Пароль"></TextBox>
+                         materialDesign:HintAssist.HelperText=""
+                         materialDesign:HintAssist.Hint="Имя">
+                    <TextBox.Text>
+                        <Binding Path="UserName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                <validation:MinLenghtValidationRule MinLength="4" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox Name="TextBoxPassword" 
+                         FontSize="20"
+                         TextWrapping="Wrap"
+                         Margin="0,0,0,15"
+                         materialDesign:HintAssist.HelperText=""
+                         materialDesign:HintAssist.Hint="Пароль">
+                    <TextBox.Text>
+                        <Binding Path="UserPassword" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                <validation:MinLenghtValidationRule MinLength="8" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
                 <Button FontSize="20"
                         MinHeight="40"
                         Command="{Binding GetConnect}"

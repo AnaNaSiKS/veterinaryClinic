@@ -1,4 +1,5 @@
-﻿using System.Windows.Navigation;
+﻿using System.Windows;
+using System.Windows.Navigation;
 using veterinaryClinic.ApplicationWindows;
 using veterinaryClinic.DataBaseClasses;
 using veterinaryClinic.ViewModel;
@@ -8,22 +9,30 @@ namespace veterinaryClinic.Model;
 public class ConnectionModel
 {
     private Configuraiton _configuraiton = ConfigurationHelper.ReadFromJson();
-    private bool isSaveMe = false;
 
     public bool IsSaveMe
     {
-        get { return isSaveMe; }
-        set => isSaveMe = value;
+        get { return _configuraiton.IsSaveConnection; }
+        set => _configuraiton.IsSaveConnection = value;
     }
 
-    public bool GetConnection(string? connName, string? connPassword)
+    public void GetConnection(string? connName, string? connPassword)
     {
         if (connName == null || connPassword == null)
         {
-            return false;
+            return;
         }
+        
         WriteNewConfig(connName, connPassword);
-        return true;
+        
+        if (_configuraiton.CheckUser() && _configuraiton.IsSaveUser)
+        {
+            NavigationController.GoToMainWindow();
+        }
+        else
+        {
+            NavigationController.GoToAuthorizationWindow();
+        }
 }
     
     public void WriteNewConfig(string? connName, string? connPassword)
@@ -36,10 +45,17 @@ public class ConnectionModel
 
     public ConnectionModel()
     {
-        if (_configuraiton.CheckConnection())
+        if (_configuraiton.CheckConnection() && _configuraiton.IsSaveConnection)
         {
-            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
-            authorizationWindow.Show();
+            if (_configuraiton.CheckUser() && _configuraiton.IsSaveUser)
+            {
+                NavigationController.GoToMainWindow();
+            }
+            else
+            {
+                NavigationController.GoToAuthorizationWindow();
+            }
         }
+        
     }
 }

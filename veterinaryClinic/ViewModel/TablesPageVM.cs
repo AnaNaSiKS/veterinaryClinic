@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using veterinaryClinic.DataBaseClasses;
 using veterinaryClinic.Model;
 
 namespace veterinaryClinic.ViewModel;
@@ -9,12 +11,49 @@ public class TablesPageVM : ViewModelBase
 {
     private TableListModel _tableModel;
     private ComboBoxTablesItem _selectedTable;
+    private object _selectedRow;
+    
+    public ICommand DeleteCommand { get; private set; }
+    public ICommand BackCommand { get; private set; }
+
+    private void DeleteRow(object obj)
+    {
+        if (_selectedRow != null)
+        {
+            _tableModel.DeleteRow(_selectedRow);
+            OnPropertyChanged("DisplayTable");
+        }
+    }
+    
+    private void Back(object obj)
+    {
+        _tableModel = new TableListModel(new Employee());
+        OnPropertyChanged("DisplayTable");
+    }
+    
+    
+    public object SelectedRow
+    {
+        get => _selectedRow;
+        set
+        {
+            _selectedRow = value;
+        }
+    }
     
     public ICommand SaveChangesCommand { get; }
 
     private void saveChangesCommand(object obj)
     {
-        _tableModel.SaveDbChanges();
+        try
+        {
+            _tableModel.SaveDbChanges();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
+        
     }
 
     public ObservableCollection<ComboBoxTablesItem> ComboBoxTables { get; }
@@ -24,11 +63,18 @@ public class TablesPageVM : ViewModelBase
         get => _selectedTable; 
         set 
         {
-            if (_selectedTable != value)
+            try
             {
-                _selectedTable = value;
-                _tableModel = new TableListModel(_selectedTable.TableName);
-                OnPropertyChanged("DisplayTable");
+                if (_selectedTable != value)
+                {
+                    _selectedTable = value;
+                    _tableModel = new TableListModel(_selectedTable.TableName);
+                    OnPropertyChanged("DisplayTable");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
     }
@@ -42,12 +88,20 @@ public class TablesPageVM : ViewModelBase
         }
     }
 
-    public List<object> DisplayTable
+    public ObservableCollection<object> DisplayTable
     {
-        get { return _tableModel.TableList; }
+        get
+        {
+            if (_tableModel == null)
+            {
+                return new ObservableCollection<object>();
+            }
+            return _tableModel.TableList;
+        }
         set
         {
             _tableModel.TableList = value;
+
         }
     }
 
@@ -84,5 +138,9 @@ public class TablesPageVM : ViewModelBase
         };
 
         SaveChangesCommand = new RelayCommand(saveChangesCommand);
+        DeleteCommand = new RelayCommand(DeleteRow);
+        BackCommand = new RelayCommand(Back);
+        
+        _tableModel = new TableListModel(new Employee());
     }
 }

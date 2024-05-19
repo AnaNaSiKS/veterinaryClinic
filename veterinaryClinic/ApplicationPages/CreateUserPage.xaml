@@ -1,0 +1,66 @@
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.CreateUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
+      xmlns:viewModel="clr-namespace:veterinaryClinic.ViewModel"
+      xmlns:validation="clr-namespace:veterinaryClinic.ValidationRules"
+      mc:Ignorable="d"
+      Title="CreateUserPage"
+      FontSize="40">
+    <Page.DataContext>
+        <viewModel:CreateUserViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" MinHeight="300" >
+            <TextBox 
+                materialDesign:HintAssist.HelperText=""
+                materialDesign:HintAssist.Hint="Имя пользователя"
+                Margin="0,0,0,15"
+                TextWrapping="Wrap">
+                <TextBox.Text>
+                    <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            <validation:MinLenghtValidationRule MinLength="4" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox
+                materialDesign:HintAssist.HelperText=""
+                materialDesign:HintAssist.Hint="Пароль пользователя"
+                Margin="0,0,0,15"
+                TextWrapping="Wrap">
+                <TextBox.Text>
+                    <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            <validation:MinLenghtValidationRule MinLength="8" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>    
+            <TextBox
+                materialDesign:HintAssist.HelperText=""
+                materialDesign:HintAssist.Hint="Номер сотрудника"
+                Margin="0,0,0,15"
+                TextWrapping="Wrap">
+                <TextBox.Text>
+                    <Binding Path="Employee" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <Button Content="Добавить нового пользователя"
+                    FontSize="40"
+                    MinHeight="80"
+                    Command="{Binding CreateUserCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

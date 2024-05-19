@@ -38,8 +38,7 @@
                 Grid.Row="2"
                 VerticalAlignment="Top"
                 ItemsSource="{Binding SampleList}"
-                SelectedItem="{Binding SelectedItem}"
-                SelectedIndex="0">
+                SelectedItem="{Binding SelectedItem}">
                 <ListBox.ItemContainerStyle>
                     <Style
                         TargetType="ListBoxItem"

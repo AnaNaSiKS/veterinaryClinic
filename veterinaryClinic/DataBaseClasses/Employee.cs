@@ -50,4 +50,9 @@ public partial class Employee
     public virtual ICollection<Serviceclass> Classservices { get; set; } = new List<Serviceclass>();
 
     public virtual ICollection<Veterinaryclinic> Veterinaryclinics { get; set; } = new List<Veterinaryclinic>();
+
+    public override string ToString()
+    {
+        return Name;
+    }
 }

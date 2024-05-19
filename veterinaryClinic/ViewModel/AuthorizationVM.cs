@@ -6,7 +6,7 @@ namespace veterinaryClinic.ViewModel;
 
 public class AuthorizationVM: ViewModelBase
 {
-    private AuthorizationModel _authorizationModel;
+    private AuthorizationModel _authorizationModel = new AuthorizationModel();
     private string userName;
     private string userPassword;
 
@@ -40,20 +40,11 @@ public class AuthorizationVM: ViewModelBase
 
     private void Connect(object obj)
     {
-        if (_authorizationModel.GetUser(userName, userPassword))
-        {
-            MainWindow authorizationWindow = new MainWindow();
-            authorizationWindow.Show();
-        }
-        else
-        {
-            MessageBox.Show("Поля не введены");
-        }
+        _authorizationModel.GetUser(userName, userPassword);
     }
 
     public AuthorizationVM()
     {
-        _authorizationModel = new AuthorizationModel();
         GetConnect = new RelayCommand(Connect);
     }
 }

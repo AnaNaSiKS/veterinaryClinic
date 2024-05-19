@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MaterialDesignThemes.Wpf;
 using veterinaryClinic.ApplicationPages;
+using veterinaryClinic.ApplicationWindows;
 using veterinaryClinic.Model;
 
 namespace veterinaryClinic.ViewModel;
@@ -47,7 +49,29 @@ public class MainViewModel: ViewModelBase
                     }
                     else if (_selectedItem.Title == "Создать пользователя")
                     {
-                        //MessageBox.Show($"Новый пользователь создан: {ExecuteCommandToDataBase.AddUser();}
+                        CurrentPage = new CreateUserPage();
+                    }
+                    else if (_selectedItem.Title == "Изменить пользователя")
+                    {
+                        veterinaryClinic.Model.Configuraiton conf = ConfigurationHelper.ReadFromJson();
+                        conf.IsSaveUser = false;
+                        ConfigurationHelper.WriteToJson(conf);
+                        
+                        AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+                        authorizationWindow.Show();
+            
+                        Application.Current.Windows[0].Close();
+                    }
+                    else if (_selectedItem.Title == "Изменить подключение к БД")
+                    {
+                        veterinaryClinic.Model.Configuraiton conf = ConfigurationHelper.ReadFromJson();
+                        conf.IsSaveConnection = false;
+                        ConfigurationHelper.WriteToJson(conf);
+                        
+                        ConnectionWindows connectionWindows = new ConnectionWindows();
+                        connectionWindows.Show();
+            
+                        Application.Current.Windows[0].Close();
                     }
                 }
             }catch (Exception e)
@@ -58,13 +82,60 @@ public class MainViewModel: ViewModelBase
     }
     public ObservableCollection<SampleItem> SampleList { get; }
 
+    private Dictionary<string, ObservableCollection<SampleItem>> _dictOfUserItem =
+        new Dictionary<string, ObservableCollection<SampleItem>>
+        {
+            {
+                "doctor", new ObservableCollection<SampleItem>
+                {
+                    new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
+                    new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                }
+            },
+            {
+                "reception", new ObservableCollection<SampleItem>
+                {
+                    new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
+                    new SampleItem { Title = "Запись на приём", Notification = "", SelectedIcon = PackIconKind.BadgeAccountAlert,UnselectedIcon = PackIconKind.BadgeAccountAlertOutline },
+                    new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                }
+            },
+            {
+                "storekeeper", new ObservableCollection<SampleItem>
+                {
+                    new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
+                    new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                }
+            },
+            {
+                "administrator", new ObservableCollection<SampleItem>
+                {
+                    new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
+                    new SampleItem { Title = "Запись на приём", Notification = "", SelectedIcon = PackIconKind.BadgeAccountAlert,UnselectedIcon = PackIconKind.BadgeAccountAlertOutline },
+                    new SampleItem { Title = "Создать пользователя", Notification = "", SelectedIcon = PackIconKind.AccountPlus,UnselectedIcon = PackIconKind.AccountPlusOutline },
+                    new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                }
+            },
+            {
+                "postgres", new ObservableCollection<SampleItem>
+                {
+                    new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
+                    new SampleItem { Title = "Запись на приём", Notification = "", SelectedIcon = PackIconKind.BadgeAccountAlert,UnselectedIcon = PackIconKind.BadgeAccountAlertOutline },
+                    new SampleItem { Title = "Создать пользователя", Notification = "", SelectedIcon = PackIconKind.AccountPlus,UnselectedIcon = PackIconKind.AccountPlusOutline },
+                    new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                }
+            }
+        };
+
     public MainViewModel()
     {
-        SampleList = new ObservableCollection<SampleItem>
-        {
-            new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
-            new SampleItem { Title = "Запись на приём", Notification = "", SelectedIcon = PackIconKind.BadgeAccountAlert,UnselectedIcon = PackIconKind.BadgeAccountAlertOutline },
-            new SampleItem { Title = "Создать пользователя", Notification = "", SelectedIcon = PackIconKind.AccountPlus,UnselectedIcon = PackIconKind.AccountPlusOutline },
-        };
+        var conf = ConfigurationHelper.ReadFromJson();
+        
+        SampleList = _dictOfUserItem[conf.ConnectionName];
     }
 }

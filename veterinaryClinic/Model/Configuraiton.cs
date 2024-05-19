@@ -4,9 +4,23 @@ public class Configuraiton
 {
     private string? connectionName;
     private string? connectionPassword;
+    private bool isSaveConnection;
     private string? userName;
     private string? userPassword;
-    
+    private bool isSaveUser;
+
+    public bool IsSaveConnection
+    {
+        get => isSaveConnection;
+        set => isSaveConnection = value;
+    }
+
+    public bool IsSaveUser
+    {
+        get => isSaveUser;
+        set => isSaveUser = value;
+    }
+
     public string? ConnectionName
     {
         get => connectionName;
@@ -33,20 +47,6 @@ public class Configuraiton
 
     public Configuraiton()
     {
-    }
-
-    public Configuraiton(String connectionName, String connectionPassword)
-    {
-        ConnectionName = connectionName;
-        ConnectionPassword = connectionPassword;
-    }
-
-    public Configuraiton(string connectionName, string connectionPassword, string userName, string userPassword)
-    {
-        ConnectionName = connectionName;
-        ConnectionPassword = connectionPassword;
-        UserName = userName;
-        UserPassword = userPassword;
     }
 
     public bool CheckConnection()
