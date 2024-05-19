@@ -1,0 +1,35 @@
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.ServiceClinicPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local2="clr-namespace:veterinaryClinic.Model"
+      xmlns:viewModel="clr-namespace:veterinaryClinic.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
+      mc:Ignorable="d"
+      FontSize="40"
+      Title="ServiceClinicPage">
+    <Page.DataContext>
+        <viewModel:ServiceClinicViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" MinHeight="300" >
+            <TextBlock 
+                TextWrapping="Wrap"
+                Text="{Binding Ability}"></TextBlock>
+            <TextBox
+                materialDesign:HintAssist.HelperText=""
+                materialDesign:HintAssist.Hint="Введите адресс клиники"
+                Margin="0,0,0,15"
+                Text="{Binding Address}"
+                TextWrapping="Wrap"></TextBox>
+            
+            <Button
+                Content="Добавить нового пользователя"
+                FontSize="40"
+                MinHeight="80"
+                Command="{Binding GetServiceCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

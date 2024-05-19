@@ -73,6 +73,18 @@ public class MainViewModel: ViewModelBase
             
                         Application.Current.Windows[0].Close();
                     }
+                    else if (_selectedItem.Title == "Услуги ветеринарной клиники")
+                    {
+                        CurrentPage = new ServiceClinicPage();
+                    }
+                    else if (_selectedItem.Title == "Полная цена записи")
+                    {
+                        CurrentPage = new FullPriceOfAppointmentPage();
+                    }
+                    else if (_selectedItem.Title == "Статистика клиники")
+                    {
+                        CurrentPage = new TotalCostPerTimePage();
+                    }
                 }
             }catch (Exception e)
             {
@@ -100,6 +112,7 @@ public class MainViewModel: ViewModelBase
                     new SampleItem { Title = "Запись на приём", Notification = "", SelectedIcon = PackIconKind.BadgeAccountAlert,UnselectedIcon = PackIconKind.BadgeAccountAlertOutline },
                     new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
                     new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                    new SampleItem { Title = "Полная цена записи", Notification = "", SelectedIcon = PackIconKind.WalletBifold, UnselectedIcon = PackIconKind.WalletBifoldOutline}
                 }
             },
             {
@@ -108,6 +121,7 @@ public class MainViewModel: ViewModelBase
                     new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
                     new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
                     new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                    new SampleItem { Title = "Услуги ветеринарной клиники", Notification = "", SelectedIcon = PackIconKind.OfficeBuildingMarker, UnselectedIcon = PackIconKind.OfficeBuildingMarkerOutline}
                 }
             },
             {
@@ -118,6 +132,9 @@ public class MainViewModel: ViewModelBase
                     new SampleItem { Title = "Создать пользователя", Notification = "", SelectedIcon = PackIconKind.AccountPlus,UnselectedIcon = PackIconKind.AccountPlusOutline },
                     new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
                     new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                    new SampleItem { Title = "Услуги ветеринарной клиники", Notification = "", SelectedIcon = PackIconKind.OfficeBuildingMarker, UnselectedIcon = PackIconKind.OfficeBuildingMarkerOutline},
+                    new SampleItem { Title = "Полная цена записи", Notification = "", SelectedIcon = PackIconKind.WalletBifold, UnselectedIcon = PackIconKind.WalletBifoldOutline},
+                    new SampleItem { Title = "Статистика клиники", Notification = "", SelectedIcon = PackIconKind.Signal, UnselectedIcon = PackIconKind.SignalCellularOutline}
                 }
             },
             {
@@ -128,6 +145,9 @@ public class MainViewModel: ViewModelBase
                     new SampleItem { Title = "Создать пользователя", Notification = "", SelectedIcon = PackIconKind.AccountPlus,UnselectedIcon = PackIconKind.AccountPlusOutline },
                     new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
                     new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
+                    new SampleItem { Title = "Услуги ветеринарной клиники", Notification = "", SelectedIcon = PackIconKind.OfficeBuildingMarker, UnselectedIcon = PackIconKind.OfficeBuildingMarkerOutline},
+                    new SampleItem { Title = "Полная цена записи", Notification = "", SelectedIcon = PackIconKind.WalletBifold, UnselectedIcon = PackIconKind.WalletBifoldOutline},
+                    new SampleItem { Title = "Статистика клиники", Notification = "", SelectedIcon = PackIconKind.Signal, UnselectedIcon = PackIconKind.SignalCellularOutline}
                 }
             }
         };

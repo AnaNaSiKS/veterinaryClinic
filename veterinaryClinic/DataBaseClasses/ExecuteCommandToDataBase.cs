@@ -239,4 +239,80 @@ internal class ExecuteCommandToDataBase
             throw new ArgumentException($"Error in checkpasswordofuser {e.Message}");
         }
     }
+
+    public static List<object[]> GetServiceAbility(string nameClinic)
+    {
+        try
+        {
+            db = OpenConnectionDataBase.GetInstance();
+            var connection = db.Database.GetDbConnection();
+            connection.Open();
+            var command = connection.CreateCommand();
+            
+            command.CommandText = "select serviceability(@name)";
+            command.Parameters.Add(new NpgsqlParameter("name", nameClinic));
+            
+            var reader = command.ExecuteReader();
+            
+            var results = new List<object[]>();
+            while (reader.Read())
+            {
+                var row = new object[reader.FieldCount];
+                reader.GetValues(row);
+                results.Add(row);
+            }
+            connection.Close();
+            return results;
+        }
+        catch (Exception e)
+        {
+            throw new ArgumentException($"Error in GetServiceAbility {e.Message}");
+        }
+    }
+    
+    public static decimal GetFullPriceOfAppointment(int id)
+    {
+        try
+        {
+            db = OpenConnectionDataBase.GetInstance();
+            var connection = db.Database.GetDbConnection();
+            connection.Open();
+            var command = connection.CreateCommand();
+            
+            command.CommandText = "select totalcostforappointment(@id)";
+            command.Parameters.Add(new NpgsqlParameter("id", id));
+            
+            var result = command.ExecuteScalar();
+            connection.Close();
+            return (decimal) result;
+        }
+        catch (Exception e)
+        {
+            throw new ArgumentException($"Error in GetFullPriceOfAppointment {e.Message}");
+        }
+    }
+    
+    public static decimal TotalCostPerTime(string clinic ,DateTime start, DateTime end)
+    {
+        try
+        {
+            db = OpenConnectionDataBase.GetInstance();
+            var connection = db.Database.GetDbConnection();
+            connection.Open();
+            var command = connection.CreateCommand();
+            
+            command.CommandText = "select totalcostpertime(@name,@start, @end)";
+            command.Parameters.Add(new NpgsqlParameter("name", clinic));
+            command.Parameters.Add(new NpgsqlParameter("start", start));
+            command.Parameters.Add(new NpgsqlParameter("end", end));
+            
+            var result = command.ExecuteScalar();
+            connection.Close();
+            return (decimal) result;
+        }
+        catch (Exception e)
+        {
+            throw new ArgumentException($"Error in TotalCostPerTime {e.Message}");
+        }
+    }
 }

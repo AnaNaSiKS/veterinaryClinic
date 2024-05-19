@@ -1,0 +1,35 @@
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.FullPriceOfAppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local2="clr-namespace:veterinaryClinic.Model"
+      xmlns:viewModel="clr-namespace:veterinaryClinic.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
+      mc:Ignorable="d"
+      FontSize="40"
+      Title="FullPriceOfAppointmentPage" Height="450" Width="800">
+    <Page.DataContext>
+        <viewModel:FullPriceAppointmentViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" MinHeight="300" >
+            <TextBlock 
+                TextWrapping="Wrap"
+                Text="{Binding GetFullPrice}"></TextBlock>
+            <TextBox
+                materialDesign:HintAssist.HelperText=""
+                materialDesign:HintAssist.Hint="Введите код записи"
+                Margin="0,0,0,15"
+                Text="{Binding Id}"
+                TextWrapping="Wrap"></TextBox>
+            
+            <Button
+                Content="Расчитать"
+                FontSize="40"
+                MinHeight="80"
+                Command="{Binding CalculateFullPriceCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Page>
