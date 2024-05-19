@@ -45,7 +45,7 @@ public class MainViewModel: ViewModelBase
                     }
                     else if (_selectedItem.Title == "Запись на приём")
                     {
-                        MessageBox.Show($"Результат проверки: {ExecuteCommandToDataBase.CheckAppointment()}");
+                        CurrentPage = new CheckAppointmentPage();
                     }
                     else if (_selectedItem.Title == "Создать пользователя")
                     {

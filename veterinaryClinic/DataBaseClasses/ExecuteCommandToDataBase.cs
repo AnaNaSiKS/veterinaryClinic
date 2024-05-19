@@ -19,6 +19,12 @@ internal class ExecuteCommandToDataBase
         db = OpenConnectionDataBase.GetInstance();
         return db.Medicines.ToList();
     }
+    
+    public static async Task<List<Medicine>> GetMedicinesAsync()
+    {
+        db = OpenConnectionDataBase.GetInstance();
+        return await db.Medicines.ToListAsync();
+    }
 
     public static List<Medicalitem> GetMedicalitems()
     {
@@ -72,6 +78,12 @@ internal class ExecuteCommandToDataBase
     {
         db = OpenConnectionDataBase.GetInstance();
         return db.Employees.ToList();
+    }
+    
+    public static async Task<List<Employee>> GetEmployeesAsync()
+    {
+        db = OpenConnectionDataBase.GetInstance();
+        return await db.Employees.ToListAsync();
     }
 
     public static List<Equipmentclass> GetEquipmentclasses()
@@ -158,7 +170,7 @@ internal class ExecuteCommandToDataBase
         return db.Veterinaryclinics.ToList();
     }
 
-    public static int CheckAppointment()
+    public static int CheckAppointment(DateTime starting, DateTime ending, int empid)
     {
         try
         {
@@ -168,9 +180,9 @@ internal class ExecuteCommandToDataBase
             var command = connection.CreateCommand();
             
             command.CommandText = "SELECT checkappointment(@starting, @ending, @empid)";
-            command.Parameters.Add(new NpgsqlParameter("starting", DateTime.Parse("2024-02-03 11:00:00")));
-            command.Parameters.Add(new NpgsqlParameter("ending", DateTime.Parse("2024-02-03 14:06:00")));
-            command.Parameters.Add(new NpgsqlParameter("empid", 2));
+            command.Parameters.Add(new NpgsqlParameter("starting", starting));
+            command.Parameters.Add(new NpgsqlParameter("ending", ending));
+            command.Parameters.Add(new NpgsqlParameter("empid", empid));
 
             var result = command.ExecuteScalar();
             connection.Close();

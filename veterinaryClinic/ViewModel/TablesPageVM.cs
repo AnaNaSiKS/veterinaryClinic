@@ -27,8 +27,16 @@ public class TablesPageVM : ViewModelBase
     
     private void Back(object obj)
     {
-        _tableModel = new TableListModel(new Employee());
-        OnPropertyChanged("DisplayTable");
+        try
+        {
+            _tableModel.RejectChanges();
+            _tableModel = new TableListModel(_selectedTable.TableName);
+            OnPropertyChanged("DisplayTable");
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
     
     

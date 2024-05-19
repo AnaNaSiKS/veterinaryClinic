@@ -188,6 +188,24 @@ public class TableListModel
         }
 
     }
+    public void RejectChanges()
+    {
+        foreach (var entry in OpenConnectionDataBase.GetInstance().ChangeTracker.Entries().ToList())
+        {
+            switch (entry.State)
+            {
+                case EntityState.Modified:
+                    entry.State = EntityState.Unchanged;
+                    break;
+                case EntityState.Added:
+                    entry.State = EntityState.Detached;
+                    break;
+                case EntityState.Deleted:
+                    entry.State = EntityState.Unchanged;
+                    break;
+            }
+        }
+    }
     
     public void DeleteRow(object obj)
     {

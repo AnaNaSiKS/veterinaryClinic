@@ -1,0 +1,39 @@
+﻿<Page x:Class="veterinaryClinic.ApplicationPages.CheckAppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:veterinaryClinic.ApplicationPages"
+      xmlns:viewModel="clr-namespace:veterinaryClinic.ViewModel"
+      xmlns:validation="clr-namespace:veterinaryClinic.ValidationRules"
+      mc:Ignorable="d"
+      Title="CheckAppointmentPage"
+      FontSize="40">
+    <Page.DataContext>
+        <viewModel:CheckAppointmentVM/>
+    </Page.DataContext>
+    <Grid>
+         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300" MinHeight="300" >
+             <TextBox 
+                 materialDesign:HintAssist.HelperText=""
+                 materialDesign:HintAssist.Hint="Начало записи"
+                 Text="{Binding DateStart}"></TextBox>
+             
+             <TextBox 
+                 materialDesign:HintAssist.HelperText=""
+                 materialDesign:HintAssist.Hint="Конец записи"
+                 Text="{Binding DateEnd}"></TextBox>
+             
+             <TextBox
+                 materialDesign:HintAssist.HelperText=""
+                 materialDesign:HintAssist.Hint="Номер сотрудника"
+                 Text="{Binding EmplId}"></TextBox>
+            
+            <Button Content="Проверить запись на прием"
+                    FontSize="40"
+                    MinHeight="80"
+                    Command="{Binding CheckAppointmentCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

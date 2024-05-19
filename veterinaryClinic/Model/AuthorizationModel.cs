@@ -26,7 +26,6 @@ public class AuthorizationModel
 
             if (ExecuteCommandToDataBase.CheckUser(userName, userPassword))
             {
-                MessageBox.Show("Авторизация прошла успешно", "Авторизация");
             }
             else
             {
