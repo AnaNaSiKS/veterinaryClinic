@@ -155,7 +155,18 @@ public class MainViewModel: ViewModelBase
     public MainViewModel()
     {
         var conf = ConfigurationHelper.ReadFromJson();
-        
-        SampleList = _dictOfUserItem[conf.ConnectionName];
+
+        try
+        {
+            SampleList = _dictOfUserItem[conf.ConnectionName];
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Неверное имя подключения");
+
+            conf.IsSaveConnection = false;
+            ConfigurationHelper.WriteToJson(conf);
+            NavigationController.GoToConnectionWindow();
+        }
     }
 }

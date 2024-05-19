@@ -148,7 +148,15 @@ public class TablesPageVM : ViewModelBase
         SaveChangesCommand = new RelayCommand(saveChangesCommand);
         DeleteCommand = new RelayCommand(DeleteRow);
         BackCommand = new RelayCommand(Back);
-        
-        _tableModel = new TableListModel(new Employee());
+
+        try
+        {
+            _tableModel = new TableListModel(new Employee());
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
+       
     }
 }
