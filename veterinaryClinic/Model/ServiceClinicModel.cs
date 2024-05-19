@@ -18,16 +18,8 @@ public class ServiceClinicModel
         }
         
         var response =  ExecuteCommandToDataBase.GetServiceAbility(_address);
-        string resultString = "";
-        foreach (var row in response)
-        {
-            foreach (var item in row)
-            {
-                resultString += $"Service Name: {item}\n";
-            }
-        }
 
-        return resultString;
+        return response;
     }
 
     public ServiceClinicModel()

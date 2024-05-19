@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using veterinaryClinic.Model;
 
 namespace veterinaryClinic.ViewModel;
@@ -11,8 +12,15 @@ public class TotalCostPerTimeViewModel: ViewModelBase
     
     private void Calculate(object obj)
     {
-        _totalCostPerTimeModel.GetTotalCost();
-        OnPropertyChanged("TotalCost");
+        try
+        {
+            _totalCostPerTimeModel.GetTotalCost();
+            OnPropertyChanged("TotalCost");
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
 
     public decimal TotalCost

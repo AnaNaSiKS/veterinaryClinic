@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.JavaScript;
+using System.Text;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
@@ -240,7 +241,7 @@ internal class ExecuteCommandToDataBase
         }
     }
 
-    public static List<object[]> GetServiceAbility(string nameClinic)
+    public static string GetServiceAbility(string nameClinic)
     {
         try
         {
@@ -253,16 +254,37 @@ internal class ExecuteCommandToDataBase
             command.Parameters.Add(new NpgsqlParameter("name", nameClinic));
             
             var reader = command.ExecuteReader();
-            
-            var results = new List<object[]>();
+            var results = new List<string>();
+
             while (reader.Read())
             {
-                var row = new object[reader.FieldCount];
-                reader.GetValues(row);
-                results.Add(row);
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    if (reader.IsDBNull(i))
+                    {
+                        results.Add("NULL");
+                    }
+                    else
+                    {
+                        var array = reader.GetValue(i) as Array;
+                        if (array != null)
+                        {
+                            foreach (var item in array)
+                            {
+                                results.Add(item.ToString());
+                            }
+                        }
+                        else
+                        {
+                            results.Add(reader.GetValue(i).ToString());
+                        }
+                        results.Add("\n");
+                    }
+                }
             }
+
             connection.Close();
-            return results;
+            return string.Join(", ", results);
         }
         catch (Exception e)
         {
@@ -307,6 +329,7 @@ internal class ExecuteCommandToDataBase
             command.Parameters.Add(new NpgsqlParameter("end", end));
             
             var result = command.ExecuteScalar();
+            Console.WriteLine(result + "РЕУЗЬТАТ");
             connection.Close();
             return (decimal) result;
         }

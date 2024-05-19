@@ -37,11 +37,9 @@ public class TotalCostPerTimeModel
     {
         if (_address == null || _start == null || _end == null)
         {
-            throw new Exception("Address or time is empty");
+            throw new Exception("Адрес или время не введен");
         }
-
         TotalCost = ExecuteCommandToDataBase.TotalCostPerTime(_address, _start, _end);
-        Console.WriteLine(TotalCost);
     }
     
     public TotalCostPerTimeModel()
