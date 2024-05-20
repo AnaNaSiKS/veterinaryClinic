@@ -151,11 +151,11 @@ public class TablesPageVM : ViewModelBase
 
         try
         {
-            _tableModel = new TableListModel(new Employee());
+            _tableModel = new TableListModel(null);
         }
         catch (Exception e)
         {
-            MessageBox.Show(e.Message);
+            MessageBox.Show(e.ToString());
         }
        
     }

@@ -46,82 +46,102 @@ public class TableListModel
         try
         {
             #region MyRegion
+
             switch (nameTable)
             {
-                case Animal: 
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnimals());
-                    _nameTable = new Animal(); 
+                case Animal:
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnimals());
+                    _nameTable = new Animal();
                     break;
-                case Analysisresult: 
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnalysisresults());
+                case Analysisresult:
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnalysisresults());
                     _nameTable = new Analysisresult();
                     break;
                 case Animalsinfo:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnimalsInfos());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetAnimalsInfos());
                     _nameTable = new Animalsinfo();
                     break;
                 case Appointment:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetAppointments());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetAppointments());
                     _nameTable = new Appointment();
                     break;
                 case Datetimeofreception:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetDatetimeOfReceptions());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetDatetimeOfReceptions());
                     _nameTable = new Datetimeofreception();
                     break;
                 case Diagnosis:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetDiagnosis());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetDiagnosis());
                     _nameTable = new Diagnosis();
                     break;
-                case Employee: 
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetEmployees());
+                case Employee:
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetEmployees());
                     _nameTable = new Employee();
                     break;
                 case Equipmentclass:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetEquipmentclasses());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetEquipmentclasses());
                     _nameTable = new Equipmentclass();
                     break;
                 case Equipmentclinic:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetEquipmentclinics());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetEquipmentclinics());
                     _nameTable = new Equipmentclinic();
                     break;
                 case Medicalitem:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetMedicalitems());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetMedicalitems());
                     _nameTable = new Medicalitem();
                     break;
                 case Medicine:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetMedicines());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetMedicines());
                     _nameTable = new Medicine();
                     break;
                 case Ownerofanimal:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetOwnerOfAnimal());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetOwnerOfAnimal());
                     _nameTable = new Ownerofanimal();
                     break;
                 case Position:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetPostions());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetPostions());
                     _nameTable = new Position();
                     break;
                 case Service:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetService());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetService());
                     _nameTable = new Service();
                     break;
                 case Serviceclass:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetServiceClass());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetServiceClass());
                     _nameTable = new Serviceclass();
                     break;
                 case Typeofanimal:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetTypeofanimals());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetTypeofanimals());
                     _nameTable = new Typeofanimal();
                     break;
                 case Useofclinicequipment:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseofclinicequipments());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseofclinicequipments());
                     _nameTable = new Useofclinicequipment();
                     break;
                 case Useofmedicalitem:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseMedicalItem());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseMedicalItem());
                     _nameTable = new Useofmedicalitem();
                     break;
                 case Useofmedicine:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseofmedicines());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetUseofmedicines());
                     _nameTable = new Useofmedicine();
                     break;
                 case User:
@@ -129,26 +149,39 @@ public class TableListModel
                     _nameTable = new User();
                     break;
                 case Userlog:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetUserLog());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetUserLog());
                     _nameTable = new Userlog();
                     break;
                 case Vaccination:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetVaccanation());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetVaccanation());
                     _nameTable = new Vaccination();
                     break;
                 case Vaccinationsdelivered:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetVaccanationDelivered());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetVaccanationDelivered());
                     _nameTable = new Vaccinationsdelivered();
                     break;
                 case Veterinaryclinic:
-                    _tableObservableCollection = new ObservableCollection<object>(ExecuteCommandToDataBase.GetVeterinaryClinic());
+                    _tableObservableCollection =
+                        new ObservableCollection<object>(ExecuteCommandToDataBase.GetVeterinaryClinic());
                     _nameTable = new Veterinaryclinic();
                     break;
-                default: throw new ArgumentException("Неверный тип таблицы"); 
+                case null:
+                    _tableObservableCollection = new ObservableCollection<object>();
+                    _nameTable = new object();
+                    break;
+                default: throw new ArgumentException("Неверный тип таблицы");
             }
+
             #endregion
 
             _deleteObservableCollection = new ObservableCollection<object>();
+        }
+        catch (ArgumentNullException e)
+        {
+            throw new ArgumentException("Где-то null");
         }
         catch (Exception e)
         {

@@ -120,8 +120,7 @@ public class MainViewModel: ViewModelBase
                 {
                     new SampleItem { Title = "Таблицы", Notification = "", SelectedIcon =  PackIconKind.FileTableBoxMultiple, UnselectedIcon = PackIconKind.FileTableBoxMultipleOutline },
                     new SampleItem { Title = "Изменить пользователя", Notification = "", SelectedIcon = PackIconKind.AccountEdit, UnselectedIcon = PackIconKind.AccountEditOutline},
-                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline},
-                    new SampleItem { Title = "Услуги ветеринарной клиники", Notification = "", SelectedIcon = PackIconKind.OfficeBuildingMarker, UnselectedIcon = PackIconKind.OfficeBuildingMarkerOutline}
+                    new SampleItem { Title = "Изменить подключение к БД", Notification = "", SelectedIcon = PackIconKind.DatabaseSettings, UnselectedIcon = PackIconKind.DatabaseSettingsOutline}
                 }
             },
             {
